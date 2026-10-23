@@ -9,6 +9,19 @@ VIBE es una red social para compartir momentos reales con amigos (fotos, pensami
 
 ---
 
+## Abrirla en el celular (publicarla con un clic)
+
+[![Desplegar en Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/mategutinoya/VIBE/tree/claude/elegant-faraday-r7ap59)
+
+1. Pulsa el botón (funciona desde el celular) e inicia sesión en Render con tu cuenta de GitHub.
+2. Pulsa **Deploy Blueprint**. La primera vez tarda unos 3–5 minutos.
+3. Abre la dirección que te da Render (`https://vibe-xxxx.onrender.com`) en el celular.
+4. En el navegador, elige **Añadir a pantalla de inicio**: VIBE se abrirá como una app, a pantalla completa.
+
+Con HTTPS funcionan la cámara y el micrófono. Ten en cuenta que **en el plan gratuito** el servicio se duerme tras 15 min sin uso (tarda ~1 min en despertar) y **los datos se borran al reiniciarse**. Para conservarlos, usa un plan de pago con disco (instrucciones en [`render.yaml`](render.yaml)).
+
+---
+
 ## Ejecutar el proyecto
 
 Requisitos: **Node.js 22.13 o superior** (se usa `node:sqlite`, que viene con Node; no hace falta instalar ninguna base de datos).

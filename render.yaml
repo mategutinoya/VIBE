@@ -1,0 +1,23 @@
+# Despliegue en Render (https://render.com) con un clic: ver README → "Abrirla en el celular".
+services:
+  - type: web
+    name: vibe
+    runtime: node
+    plan: free
+    buildCommand: npm --prefix server ci && npm --prefix web ci --include=dev && npm --prefix web run build
+    startCommand: npm --prefix server start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: TRUST_PROXY
+        value: "1"
+    # El plan gratuito no guarda archivos: los datos se borran cuando el servicio se reinicia.
+    # Para conservarlos, cambia a un plan de pago y descomenta el disco:
+    # disk:
+    #   name: vibe-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
+    # y añade la variable DATA_DIR=/var/data

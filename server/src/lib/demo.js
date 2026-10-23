@@ -63,9 +63,13 @@ export function seedDemo() {
     const list = Object.values(ids);
     for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) makeFriends(list[i], list[j]);
 
-    const postIds = POSTS.map((p, i) => {
+    // Se insertan del más antiguo al más reciente para que el orden por id coincida con el cronológico
+    const postIds = [];
+    const order = POSTS.map((_, i) => i).sort((a, b) => POSTS[b].ago - POSTS[a].ago);
+    for (const i of order) {
+      const p = POSTS[i];
       const author = ids[p.u];
-      if (!author) return null;
+      if (!author) continue;
       let mediaId = null;
       if (p.kind === 'photo') {
         mediaId = storeMedia(author, artPng({ width: 600, height: 750, colors: p.art, seed: i * 13 + 3 }), { purpose: 'post' }).id;
@@ -77,8 +81,8 @@ export function seedDemo() {
         'INSERT INTO posts (author_id, kind, body, media_id, audience, created_at) VALUES (?, ?, ?, ?, ?, ?)',
         author, p.kind, p.body, mediaId, p.audience, Math.round(t - p.ago * H),
       );
-      return Number(r.lastInsertRowid);
-    });
+      postIds[i] = Number(r.lastInsertRowid);
+    }
     COMMENTS.forEach(([pi, u, body], k) => {
       if (postIds[pi] && ids[u]) run('INSERT INTO comments (post_id, author_id, body, created_at) VALUES (?, ?, ?, ?)', postIds[pi], ids[u], body, Math.min(t, Math.round(t - POSTS[pi].ago * H + (k + 1) * 300_000)));
     });

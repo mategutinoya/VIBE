@@ -26,6 +26,9 @@ function usernameProblem(username) {
   return null;
 }
 
+/** Sesión actual sin error si no hay sesión (evita un 401 en cada arranque del cliente). */
+router.get('/session', (req, res) => res.json({ user: req.user ? selfUser(req.user) : null }));
+
 router.get('/username-available', (req, res) => {
   const username = normalizeUsername(req.query.u);
   const problem = usernameProblem(username);

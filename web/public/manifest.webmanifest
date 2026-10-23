@@ -1,0 +1,11 @@
+{
+  "name": "VIBE",
+  "short_name": "VIBE",
+  "description": "Tu dúo del día. Momentos reales con tus amigos.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07080f",
+  "theme_color": "#07080f",
+  "lang": "es",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

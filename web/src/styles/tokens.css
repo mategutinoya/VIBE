@@ -1,0 +1,95 @@
+/* =========================================================
+   VIBE · Design tokens
+   Una sola fuente de verdad para color, tipo, espacio y movimiento.
+   ========================================================= */
+
+:root {
+  /* Tipografía */
+  --font-display: 'Bricolage Grotesque Variable', 'Manrope Variable', system-ui, sans-serif;
+  --font-body: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --text-xs: 0.75rem;   /* 12 */
+  --text-sm: 0.8125rem; /* 13 */
+  --text-md: 0.9375rem; /* 15 */
+  --text-lg: 1.0625rem; /* 17 */
+  --text-xl: 1.375rem;  /* 22 */
+  --text-2xl: 1.75rem;  /* 28 */
+  --text-3xl: 2.25rem;  /* 36 */
+
+  /* Espaciado (base 4) */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px; --s-8: 32px; --s-10: 40px; --s-12: 48px;
+
+  /* Radios */
+  --r-xs: 8px; --r-sm: 12px; --r-md: 18px; --r-lg: 24px; --r-xl: 32px; --r-pill: 999px;
+
+  /* Marca: el par violeta–azul representa a las dos personas de un Dúo */
+  --violet: #8a6bff;
+  --violet-strong: #7452ff;
+  --blue: #4f8bff;
+  --blend: #e9e4ff; /* la intersección de los dos círculos */
+  --grad: linear-gradient(135deg, var(--violet) 0%, var(--blue) 100%);
+  --grad-soft: linear-gradient(135deg, rgb(138 107 255 / 0.18), rgb(79 139 255 / 0.12));
+
+  --danger: #ff5c7a;
+  --success: #3ed598;
+  --warning: #ffc46b;
+
+  /* Movimiento */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 140ms;
+  --t-med: 240ms;
+  --t-slow: 420ms;
+
+  /* Layout */
+  --column: 560px;
+  --nav-h: 64px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Oscuro (predeterminado): negro azulado, superficies que suben en luminosidad, no en saturación */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #07080f;
+  --bg-glow: rgb(116 82 255 / 0.10);
+  --surface: #0e1020;
+  --surface-2: #151830;
+  --surface-3: #1d2140;
+  --line: rgb(255 255 255 / 0.07);
+  --line-strong: rgb(255 255 255 / 0.13);
+  --text: #eef0ff;
+  --text-2: #a5aacb;
+  --text-3: #6d7299;
+  --on-accent: #ffffff;
+  --overlay: rgb(3 4 10 / 0.72);
+  --shadow: 0 18px 50px rgb(0 0 0 / 0.45);
+  --focus: rgb(138 107 255 / 0.55);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f6f5fb;
+  --bg-glow: rgb(116 82 255 / 0.08);
+  --surface: #ffffff;
+  --surface-2: #f0eff8;
+  --surface-3: #e6e4f3;
+  --line: rgb(20 18 60 / 0.08);
+  --line-strong: rgb(20 18 60 / 0.15);
+  --text: #12132b;
+  --text-2: #55587a;
+  --text-3: #8b8eab;
+  --on-accent: #ffffff;
+  --overlay: rgb(18 19 43 / 0.45);
+  --shadow: 0 18px 50px rgb(40 30 110 / 0.14);
+  --focus: rgb(116 82 255 / 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0ms;
+    --t-med: 0ms;
+    --t-slow: 0ms;
+  }
+}
